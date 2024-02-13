@@ -1,5 +1,10 @@
 import Image from 'next/image'
+import { PrismaClient } from '@prisma/client'
 
+const prisma = new PrismaClient();
+// run inside `async` function
+const newUser = await prisma.todoList.findMany();
+console.log('ljol', newUser);
 export default function Home() {
   return (
     <main className="flex min-h-screen flex-col items-center justify-between p-24">
