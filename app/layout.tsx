@@ -1,11 +1,11 @@
 'use client'
-import type { Metadata } from 'next'
 import Image from 'next/image';
 import { Inter } from 'next/font/google'
 import './globals.css'
 import Link from "next/link";
 import React, { useState, useEffect } from "react";
 import { dancingScript } from "@/fonts";
+
 const inter = Inter({ subsets: ['latin'] })
 
 const NavBar = () => {
@@ -62,27 +62,29 @@ const NavBar = () => {
   );
 };
 
-const DividerLine = ({ color = 'red' }) => (
+const DividerLine = () => (
   <hr />
 )
 const Footer = () => {
   return (
     <>
       <DividerLine />
-      <div className='flex'>
-        <div className='basis-1/2'>
-          <button type="button"><Image src="/github.svg" width={30} height={30} alt={''} /></button>
-          <button type="button"><Image src="/linkedin.svg" width={30} height={30} alt={''} /></button>
-          <button type="button"><Image src="/stack-overflow.svg" width={30} height={30} alt={''} /></button>
-          <button type="button"><Image src="/twitter.svg" width={30} height={30} alt={''} /></button>
-          <button type="button"><Image src="/youtube.svg" width={30} height={30} alt={''} /></button>
+        <div className='flex ml-40 py-4'>
+          {renderFooterImageTile("/github.svg", 'github', 'https://github.com/Adtya11')}
+          {renderFooterImageTile("/linkedin.svg", 'linkedin', 'https://www.linkedin.com/in/adityasrivastava11/inkedin')}
+          {renderFooterImageTile("/stack-overflow.svg", 'stackoverflow', 'https://stackoverflow.com/users/12202820/aditya-srivastava')}
+          {renderFooterImageTile("/twitter.svg", 'twitter', 'https://twitter.com/shivashi_11')}
+          {renderFooterImageTile("/youtube.svg", 'youtube', '')}
         </div>
         <div />
-      </div>
     </>
   )
 }
-
+const renderFooterImageTile = (src: string, alt: string, url: string) => {
+  return (
+    <a href={url} target='_blank'><button type="button" className='px-3 py-2 hover:bg-gray-100 rounded-lg'><Image src={src} width={30} height={30} alt={alt} /></button></a>
+  )
+}
 export default function RootLayout({
   children,
 }: {
