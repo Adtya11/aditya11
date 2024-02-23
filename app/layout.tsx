@@ -12,7 +12,6 @@ const NavBar = () => {
 
   const [clientWindowHeight, setClientWindowHeight] = useState(0);
   const [boxShadow, setBoxShadow] = useState(0);
-
   useEffect(() => {
     const handleScroll = () => {
       setClientWindowHeight(window.scrollY);
@@ -33,7 +32,7 @@ const NavBar = () => {
 
   return (
     <div
-      className="w-full bg-white backdrop-blur-sm fixed top-0"
+      className="w-full backdrop-blur fixed top-0"
       style={{
         boxShadow: `rgb(0 0 0 / ${boxShadow}) 0px 0px 20px 6px`
       }}
