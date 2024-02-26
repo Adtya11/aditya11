@@ -32,7 +32,7 @@ const NavBar = () => {
 
   return (
     <div
-      className="w-full backdrop-blur fixed top-0"
+      className="w-full backdrop-blur sticky top-0 left-0"
       style={{
         boxShadow: `rgb(0 0 0 / ${boxShadow}) 0px 0px 20px 6px`
       }}
