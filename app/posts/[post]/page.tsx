@@ -4,8 +4,6 @@ import PostLayout, {
   renderDate,
   renderHeading,
   renderTextBlock,
-  renderTextBlockContinued,
-  renderTextBlockContinuedTop,
   renderTitle,
   renderUrlText,
   renderSpace,
