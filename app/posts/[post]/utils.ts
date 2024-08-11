@@ -1,5 +1,5 @@
 
-export const parseDate = (date) => {
+export const parseDate = (date: Date) => {
   const months = [
     "January",
     "February",

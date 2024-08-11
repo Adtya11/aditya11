@@ -30,7 +30,7 @@ const content = reactElementToJSXString(<div></div>);
 
 post.content = content;
 
-export default async function Page({ params }) {
+export default async function Page({}) {
   //insertPost(post);
 
   // const post: Post = (await fetchPost(params.post))[0];
