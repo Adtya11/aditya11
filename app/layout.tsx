@@ -46,7 +46,7 @@ const NavBar = () => {
           </div>
           <div className="flex w-2/6 text-gray-600 justify-center">
             <li className="w-1/3 hover:text-black">
-              <Link href="/">Posts</Link>
+              <Link href="/posts">Posts</Link>
             </li>
             <li className="w-1/3 hover:text-black">
               <Link href="/">Videos</Link>
