@@ -1,14 +1,9 @@
 import { ReactNode } from "react";
 import { parseDate } from "./utils";
-import { Light as SyntaxHighlighter } from "react-syntax-highlighter";
-import js from "react-syntax-highlighter/dist/esm/languages/hljs/javascript";
-import docco from "react-syntax-highlighter/dist/esm/styles/hljs/docco";
-
-SyntaxHighlighter.registerLanguage("javascript", js);
 
 interface Props {
-  child: ReactNode
-};
+  child: ReactNode;
+}
 
 export default async function PostLayout({ child }: Props) {
   return <div className=" mx-auto w-7/12 mt-14">{child}</div>;
@@ -64,9 +59,9 @@ export function renderEmbedApp(src: string, title: string) {
 export const renderTypeScriptCodeSnippet = (code: string) => {
   return (
     <div className="mb-2 mt-2">
-      <SyntaxHighlighter language="javascript" style={docco}>
-        {code}
-      </SyntaxHighlighter>
+      <div className="bg-gray-50 text-black rounded-md">
+        <pre className="whitespace-pre-wrap">{code}</pre>
+      </div>
     </div>
   );
 };
