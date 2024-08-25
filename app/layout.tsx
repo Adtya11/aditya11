@@ -1,15 +1,14 @@
-'use client'
-import Image from 'next/image';
-import { Inter } from 'next/font/google'
-import './globals.css'
+"use client";
+import Image from "next/image";
+import { Inter } from "next/font/google";
+import "./globals.css";
 import Link from "next/link";
 import React, { useState, useEffect } from "react";
 import { dancingScript } from "@/fonts";
 
-const inter = Inter({ subsets: ['latin'] })
+const inter = Inter({ subsets: ["latin"] });
 
 const NavBar = () => {
-
   const [clientWindowHeight, setClientWindowHeight] = useState(0);
   const [boxShadow, setBoxShadow] = useState(0);
   useEffect(() => {
@@ -34,13 +33,16 @@ const NavBar = () => {
     <div
       className="w-full backdrop-blur sticky top-0 left-0"
       style={{
-        boxShadow: `rgb(0 0 0 / ${boxShadow}) 0px 0px 20px 6px`
+        boxShadow: `rgb(0 0 0 / ${boxShadow}) 0px 0px 20px 6px`,
       }}
     >
       <nav className="py-8 text-lg">
         <ul className="flex">
           <div className="flex w-4/6 mx-10">
-            <li className={dancingScript.className} style={{ fontSize: 30, fontWeight: "bold", marginLeft: 190 }}>
+            <li
+              className={dancingScript.className}
+              style={{ fontSize: 30, fontWeight: "bold", marginLeft: 190 }}
+            >
               <Link href="/">Aditya</Link>
             </li>
           </div>
@@ -61,38 +63,61 @@ const NavBar = () => {
   );
 };
 
-const DividerLine = () => (
-  <hr />
-)
+const DividerLine = () => <hr />;
 const Footer = () => {
   return (
     <>
       <DividerLine />
-        <div className='flex ml-40 py-4'>
-          {renderFooterImageTile("/github.svg", 'github', 'https://github.com/Adtya11')}
-          {renderFooterImageTile("/linkedin.svg", 'linkedin', 'https://www.linkedin.com/in/adityasrivastava11/inkedin')}
-          {renderFooterImageTile("/stack-overflow.svg", 'stackoverflow', 'https://stackoverflow.com/users/12202820/aditya-srivastava')}
-          {renderFooterImageTile("/twitter.svg", 'twitter', 'https://twitter.com/shivashi_11')}
-          {renderFooterImageTile("/youtube.svg", 'youtube', '')}
-        </div>
-        <div />
+      <div className="flex ml-40 py-4">
+        {renderFooterImageTile(
+          "/github.svg",
+          "github",
+          "https://github.com/Adtya11"
+        )}
+        {renderFooterImageTile(
+          "/linkedin.svg",
+          "linkedin",
+          "https://www.linkedin.com/in/adityasrivastava11/inkedin"
+        )}
+        {renderFooterImageTile(
+          "/stack-overflow.svg",
+          "stackoverflow",
+          "https://stackoverflow.com/users/12202820/aditya-srivastava"
+        )}
+        {renderFooterImageTile(
+          "/twitter.svg",
+          "twitter",
+          "https://twitter.com/shivashi_11"
+        )}
+        {renderFooterImageTile("/youtube.svg", "youtube", "")}
+      </div>
+      <div />
     </>
-  )
-}
+  );
+};
 const renderFooterImageTile = (src: string, alt: string, url: string) => {
   return (
-    <a href={url} target='_blank'><button type="button" className='px-3 py-2 hover:bg-gray-100 rounded-lg'><Image src={src} width={30} height={30} alt={alt} /></button></a>
-  )
-}
+    <a href={url} target="_blank">
+      <button type="button" className="px-3 py-2 hover:bg-gray-100 rounded-lg">
+        <Image src={src} width={30} height={30} alt={alt} />
+      </button>
+    </a>
+  );
+};
 export default function RootLayout({
   children,
 }: {
-  children: React.ReactNode
+  children: React.ReactNode;
 }) {
   return (
     <>
       <html lang="en">
-        <body className={inter.className}><NavBar />{children}<Footer /></body>
-      </html></>
-  )
+        <body className={inter.className}>
+          <NavBar />
+          {children}
+          <Footer />
+        </body>
+      </html>
+    </>
+  );
 }
