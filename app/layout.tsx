@@ -54,7 +54,7 @@ const NavBar = () => {
               <Link href="/">Videos</Link>
             </li>
             <li className="w-1/3 hover:text-black">
-              <Link href="/">Bucket List</Link>
+              <Link href="/">About Me</Link>
             </li>
           </div>
         </ul>
