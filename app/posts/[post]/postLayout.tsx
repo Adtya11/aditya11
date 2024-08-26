@@ -6,7 +6,7 @@ interface Props {
 }
 
 export default async function PostLayout({ child }: Props) {
-  return <div className="mx-auto w-7/12 mt-14">{child}</div>;
+  return <div className="text-justify mx-auto w-7/12 mt-14">{child}</div>;
 }
 
 export function renderTitle(title: string) {
