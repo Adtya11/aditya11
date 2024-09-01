@@ -113,9 +113,12 @@ export default function RootLayout({
     <>
       <html lang="en">
         <head>
-          <meta name="viewport" content="width=1024" />
+          <meta
+            name="viewport"
+            content="width=device-width, initial-scale=0.1"
+          />
         </head>
-        <body className={inter.className}>
+        <body className={`${inter.className} min-w-[1024px]`}>
           <NavBar />
           {children}
           <Footer />
