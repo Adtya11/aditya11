@@ -2,7 +2,7 @@ import { eq } from "drizzle-orm";
 import { db } from "./db";
 import { InsertPost, postsTable } from "./schema";
 
-type post = {
+export type post = {
   id: number;
   title: string;
   slug: string;
