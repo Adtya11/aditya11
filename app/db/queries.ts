@@ -10,6 +10,7 @@ export type post = {
   description: string;
   thumbnail: string;
   updatedAt: Date;
+  tags: unknown;
 };
 
 export async function getPosts(): Promise<Array<post>> {

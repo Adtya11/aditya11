@@ -1,5 +1,4 @@
 import { post } from "../db/queries";
-import Image from "next/image";
 import { parseDate } from "../posts/[post]/utils";
 import Link from "next/link";
 
@@ -13,16 +12,22 @@ export default async function PostTile({
   const slug = `/posts/${post.slug}`;
   return (
     <Link href={slug}>
-      <div className="flex flex-row mt-5">
-        <div className="w-1/2 justify-center items-center px-5">
-          <Image src={post.thumbnail} width={700} height={500} alt="pop" />
+      <div className="flex flex-col mt-5 text-black">
+        <div className="text-4xl text-left">{post.title}</div>
+        <div className="text-base text-left">{parseDate(post.updatedAt)}</div>
+        <div className="text-xl text-justify pt-4 italic">
+          {post.description}
         </div>
-        <div className="w-1/2 text-left text-black">
-          <div className="text-base">{parseDate(post.updatedAt)}</div>
-          <div className="text-4xl">{post.title}</div>
-          <div className="text-xl text-justify pt-4 mr-16">{post.description}</div>
-        </div>
+        <div className="flex flex-row text-base space-x-2 mt-3">{((post.tags as any).tags as Array<string>).map(tag => renderTag(tag))}</div>
       </div>
     </Link>
   );
+}
+
+function renderTag(tag: string): JSX.Element {
+  return (
+    <div className="px-3 py-2 bg-gray-100 rounded-lg">
+      # {tag}
+    </div>
+  )
 }
