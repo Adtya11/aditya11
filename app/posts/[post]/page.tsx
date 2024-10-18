@@ -15,12 +15,16 @@ import PostLayout, {
 import reactElementToJSXString from "react-element-to-jsx-string";
 import parse from "html-react-parser";
 import { parseDate } from "./utils";
+import { headers } from 'next/headers'
 
 type paramsType = {
   post: string;
 };
 
 export default async function Page({ params }: { params: paramsType }) {
-  const posit: Post = (await fetchPost(params.post))[0];
-  return <PostLayout child={parse(posit.content)} />;
+  const header = headers()
+  const ip = (header.get('x-forwarded-for') ?? '127.0.0.1').split(',')[0]
+  console.log('loiol', ip);
+  const post: Post = (await fetchPost(params.post))[0];
+  return <PostLayout child={parse(post.content)} />;
 }

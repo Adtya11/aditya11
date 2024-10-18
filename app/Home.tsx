@@ -1,6 +1,8 @@
 import { lato } from "@/fonts";
+import { request } from "http";
 
 export default function Home() {
+
   return (
     <div className="w-9/12 p-6">
       <div className={`text-8xl text-center ${lato.className}`}>
