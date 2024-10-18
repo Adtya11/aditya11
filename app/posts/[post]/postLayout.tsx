@@ -3,10 +3,11 @@ import { parseDate } from "./utils";
 
 interface Props {
   child: ReactNode;
+  ip: string;
 }
 
-export default async function PostLayout({ child }: Props) {
-  return <div className="text-justify mx-auto w-7/12 mt-14">{child}</div>;
+export default async function PostLayout({ child, ip }: Props) {
+  return <div className="text-justify mx-auto w-7/12 mt-14">{ip}{child}</div>;
 }
 
 export function renderTitle(title: string) {
