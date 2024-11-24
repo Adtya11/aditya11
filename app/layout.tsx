@@ -141,12 +141,9 @@ export default function RootLayout({
     <>
       <html lang="en">
         <head>
-          <meta
-            name="viewport"
-            content="width=device-width, initial-scale=1.0"
-          />
+          <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         </head>
-        <body className={`${inter.className} bg-white`}>
+        <body className={`${inter.className} bg-white flex flex-col min-h-screen`}>
           <NavBar />
           <main className="flex-grow">{children}</main>
           <Footer />

@@ -2,15 +2,16 @@ import { lato } from "@/fonts";
 import { request } from "http";
 
 export default function Home() {
-
   return (
-    <div className="w-9/12 p-6">
-      <div className={`text-8xl text-center ${lato.className}`}>
-        Hello! <span className="text-purple-500"> Aditya </span> here :)
+    <div className="w-full max-w-3xl mx-auto p-4 sm:p-6">
+      <div
+        className={`text-5xl sm:text-6xl lg:text-8xl text-center font-bold ${lato.className}`}
+      >
+        Hello! <span className="text-purple-500">Aditya</span> here :)
       </div>
-      <div className="text-center text-4xl p-6">
-        I build things, passionate in frontend development, this is where I
-        write stuff and share my knowledge.
+      <div className="text-center text-xl sm:text-2xl lg:text-4xl mt-6">
+        I build things, passionate about frontend development. This is where I
+        write, share my knowledge, and explore ideas.
       </div>
     </div>
   );
