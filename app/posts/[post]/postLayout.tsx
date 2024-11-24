@@ -8,7 +8,7 @@ interface Props {
 
 export default async function PostLayout({ child }: Props) {
   return (
-    <div className="text-justify mx-auto w-7/12 mt-14">
+    <div className="text-justify mx-auto w-11/12 md:w-7/12 mt-8 sm:mt-14">
       {child}
     </div>
   );
@@ -24,10 +24,11 @@ export function renderDate(date: Date) {
 
 export function renderTextBlock(text: string) {
   return (
-    <div className="inline tracking-wide text-xl leading-relaxed">{text}</div>
+    <div className="inline tracking-wide text-base md:text-xl leading-relaxed px-2 sm:px-0">
+      {text}
+    </div>
   );
 }
-
 export function renderUrlText(text: string, url?: string) {
   return (
     <span className="tracking-wide text-xl leading-relaxed text-pink-600">
@@ -39,13 +40,20 @@ export function renderUrlText(text: string, url?: string) {
 }
 
 export function renderHeading(text: string) {
-  return <div className="text-4xl pb-6 pt-10">{text}</div>;
+  return (
+    <div className="text-2xl md:text-4xl pb-4 md:pb-6 pt-6 md:pt-10 text-center md:text-left">
+      {text}
+    </div>
+  );
 }
 
 export function renderSubHeading(text: string) {
-  return <div className="text-3xl pb-6 pt-10">{text}</div>;
+  return (
+    <div className="text-xl md:text-3xl pb-4 md:pb-6 pt-6 md:pt-10 text-center md:text-left">
+      {text}
+    </div>
+  );
 }
-
 export function renderSpace() {
   return <div className="mb-2"></div>;
 }

@@ -28,7 +28,9 @@ const NavBar = () => {
       setBoxShadow(backgroundTransparacyVar * 0.1);
     }
   }, [clientWindowHeight]);
+
   const Icon = menuOpen ? XMarkIcon : Bars3Icon;
+
   return (
     <div
       className="w-full backdrop-blur sticky top-0 left-0 z-50"
@@ -36,7 +38,12 @@ const NavBar = () => {
         boxShadow: `rgb(0 0 0 / ${boxShadow}) 0px 0px 20px 6px`,
       }}
     >
-      <nav className="py-4 px-4 lg:px-8 bg-white">
+      <nav
+        className="py-4 px-4 lg:px-8 bg-white bg-opacity-60 backdrop-blur-md transition-all"
+        style={{
+          backgroundColor: `rgba(255, 255, 255, ${1 - clientWindowHeight / 400})`,
+        }}
+      >
         <div className="flex justify-between items-center">
           {/* Logo */}
           <div
@@ -53,6 +60,7 @@ const NavBar = () => {
           >
             <Icon className="h-6 w-6 text-gray-800" />
           </button>
+
           {/* Desktop Menu */}
           <ul className="hidden lg:flex space-x-8 text-gray-600">
             <li className="hover:text-black">
