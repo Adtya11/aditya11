@@ -5,6 +5,7 @@ import "./globals.css";
 import Link from "next/link";
 import React, { useState, useEffect } from "react";
 import { dancingScript } from "@/fonts";
+import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -27,7 +28,7 @@ const NavBar = () => {
       setBoxShadow(backgroundTransparacyVar * 0.1);
     }
   }, [clientWindowHeight]);
-
+  const Icon = menuOpen ? XMarkIcon : Bars3Icon;
   return (
     <div
       className="w-full backdrop-blur sticky top-0 left-0 z-50"
@@ -38,7 +39,10 @@ const NavBar = () => {
       <nav className="py-4 px-4 lg:px-8 bg-white">
         <div className="flex justify-between items-center">
           {/* Logo */}
-          <div className={dancingScript.className} style={{ fontSize: 30, fontWeight: "bold" }}>
+          <div
+            className={dancingScript.className}
+            style={{ fontSize: 30, fontWeight: "bold" }}
+          >
             <Link href="/">Aditya</Link>
           </div>
 
@@ -47,14 +51,8 @@ const NavBar = () => {
             className="lg:hidden p-2 rounded-md focus:outline-none focus:ring-2 focus:ring-gray-400"
             onClick={() => setMenuOpen(!menuOpen)}
           >
-            <Image
-              src={menuOpen ? "/close.svg" : "/menu.svg"}
-              width={24}
-              height={24}
-              alt="Menu"
-            />
+            <Icon className="h-6 w-6 text-gray-800" />
           </button>
-
           {/* Desktop Menu */}
           <ul className="hidden lg:flex space-x-8 text-gray-600">
             <li className="hover:text-black">
@@ -143,11 +141,14 @@ export default function RootLayout({
     <>
       <html lang="en">
         <head>
-          <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+          <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1.0"
+          />
         </head>
         <body className={`${inter.className} bg-white`}>
           <NavBar />
-          <main className="min-h-screen">{children}</main>
+          <main className="flex-grow">{children}</main>
           <Footer />
         </body>
       </html>
