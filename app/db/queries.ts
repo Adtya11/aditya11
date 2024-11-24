@@ -11,6 +11,7 @@ export type post = {
   thumbnail: string;
   updatedAt: Date;
   tags: unknown;
+  likes: number;
 };
 
 export async function getPosts(): Promise<Array<post>> {

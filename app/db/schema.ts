@@ -1,4 +1,4 @@
-import { jsonb, pgTable, serial, text, timestamp } from 'drizzle-orm/pg-core';
+import { jsonb, pgTable, serial, text, timestamp, integer } from 'drizzle-orm/pg-core';
 
 export const postsTable = pgTable('posts', {
   id: serial('id').primaryKey(),
@@ -10,7 +10,8 @@ export const postsTable = pgTable('posts', {
   updatedAt: timestamp('updated_at')
     .notNull()
     .$onUpdate(() => new Date()),
-  tags: jsonb('tags').notNull(),
+  tags: jsonb('tags').default({}),
+  likes: integer('likes').notNull().default(0),
 });
 
 export type InsertPost = typeof postsTable.$inferInsert;

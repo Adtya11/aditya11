@@ -68,7 +68,7 @@ const Footer = () => {
   return (
     <>
       <DividerLine />
-      <div className="flex ml-40 py-4">
+      <div className="flex ml-40 py-4" id="footer">
         {renderFooterImageTile(
           "/github.svg",
           "github",

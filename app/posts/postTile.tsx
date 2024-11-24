@@ -13,7 +13,7 @@ export default async function PostTile({
   return (
     <Link href={slug}>
       <div className="flex flex-col mt-5 text-black">
-        <div className="text-4xl text-left">{post.title}</div>
+        <div className="text-4xl text-left hover:text-blue-800">{post.title}</div>
         <div className="text-base text-left">{parseDate(post.updatedAt)}</div>
         <div className="text-xl text-justify pt-4 italic">
           {post.description}

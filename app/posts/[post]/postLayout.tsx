@@ -1,20 +1,25 @@
-import { ReactNode } from "react";
+
+import { ReactNode, useEffect, useRef } from "react";
 import { parseDate } from "./utils";
+import { PlaceLike } from './../like';
 
 interface Props {
   child: ReactNode;
-  ip: string;
 }
 
-export default async function PostLayout({ child, ip }: Props) {
-  return <div className="text-justify mx-auto w-7/12 mt-14">{ip}{child}</div>;
+export default async function PostLayout({ child }: Props) {
+  return (
+    <div className="text-justify mx-auto w-7/12 mt-14">
+      {child}
+    </div>
+  );
 }
 
 export function renderTitle(title: string) {
   return <div className="text-6xl pb-7">{title}</div>;
 }
 
-export function renderDate(date: any) {
+export function renderDate(date: Date) {
   return <div className="pb-2">Last updated on {parseDate(date)}</div>;
 }
 
@@ -36,6 +41,10 @@ export function renderUrlText(text: string, url?: string) {
 
 export function renderHeading(text: string) {
   return <div className="text-4xl pb-6 pt-10">{text}</div>;
+}
+
+export function renderSubHeading(text: string) {
+  return <div className="text-3xl pb-6 pt-10">{text}</div>;
 }
 
 export function renderSpace() {
@@ -81,4 +90,15 @@ export function renderBulletPoint(text: string) {
       <li className="tracking-wide text-xl leading-relaxed">{text}</li>
     </ul>
   );
+}
+
+export function renderImage(url: string, title: string) {
+  return (<>
+    <img 
+  src={url} 
+  alt="Styled Image" 
+  style={{ width: '300px', height: 'auto', borderRadius: '10px' }} 
+/>
+<p className="text-center">{title}</p></>
+  )
 }
