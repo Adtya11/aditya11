@@ -30,7 +30,7 @@ export default async function PostTile({
 
         {/* Tags */}
         <div className="flex flex-wrap text-sm sm:text-base gap-2 mt-3">
-          {(post.tags as any).tags.map((tag) => renderTag(tag))}
+          {(post.tags as any).tags.map((tag: any) => renderTag(tag))}
         </div>
       </div>
     </Link>
