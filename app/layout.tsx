@@ -11,53 +11,84 @@ const inter = Inter({ subsets: ["latin"] });
 const NavBar = () => {
   const [clientWindowHeight, setClientWindowHeight] = useState(0);
   const [boxShadow, setBoxShadow] = useState(0);
+  const [menuOpen, setMenuOpen] = useState(false);
+
   useEffect(() => {
     const handleScroll = () => {
       setClientWindowHeight(window.scrollY);
     };
-    handleScroll();
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   useEffect(() => {
-    let backgroundTransparacyVar = clientWindowHeight / 400;
-
+    const backgroundTransparacyVar = clientWindowHeight / 400;
     if (backgroundTransparacyVar < 1) {
-      let boxShadowVar = backgroundTransparacyVar * 0.1;
-      setBoxShadow(boxShadowVar);
+      setBoxShadow(backgroundTransparacyVar * 0.1);
     }
   }, [clientWindowHeight]);
 
   return (
     <div
-      className="w-full backdrop-blur sticky top-0 left-0"
+      className="w-full backdrop-blur sticky top-0 left-0 z-50"
       style={{
         boxShadow: `rgb(0 0 0 / ${boxShadow}) 0px 0px 20px 6px`,
       }}
     >
-      <nav className="py-8 text-lg">
-        <ul className="flex">
-          <div className="flex w-4/6 mx-10">
-            <li
-              className={dancingScript.className}
-              style={{ fontSize: 30, fontWeight: "bold", marginLeft: 190 }}
-            >
-              <Link href="/">Aditya</Link>
-            </li>
+      <nav className="py-4 px-4 lg:px-8 bg-white">
+        <div className="flex justify-between items-center">
+          {/* Logo */}
+          <div className={dancingScript.className} style={{ fontSize: 30, fontWeight: "bold" }}>
+            <Link href="/">Aditya</Link>
           </div>
-          <div className="flex w-2/6 text-gray-600 justify-center">
-            <li className="w-1/3 hover:text-black">
+
+          {/* Hamburger Button */}
+          <button
+            className="lg:hidden p-2 rounded-md focus:outline-none focus:ring-2 focus:ring-gray-400"
+            onClick={() => setMenuOpen(!menuOpen)}
+          >
+            <Image
+              src={menuOpen ? "/close.svg" : "/menu.svg"}
+              width={24}
+              height={24}
+              alt="Menu"
+            />
+          </button>
+
+          {/* Desktop Menu */}
+          <ul className="hidden lg:flex space-x-8 text-gray-600">
+            <li className="hover:text-black">
               <Link href="/posts">Posts</Link>
             </li>
-            <li className="w-1/3 hover:text-black">
+            <li className="hover:text-black">
               <Link href="/">Videos</Link>
             </li>
-            <li className="w-1/3 hover:text-black">
+            <li className="hover:text-black">
               <Link href="/">About Me</Link>
             </li>
-          </div>
-        </ul>
+          </ul>
+        </div>
+
+        {/* Mobile Menu */}
+        {menuOpen && (
+          <ul className="lg:hidden mt-4 space-y-2 bg-gray-50 p-4 rounded-md">
+            <li>
+              <Link href="/posts" className="block py-2 hover:text-black">
+                Posts
+              </Link>
+            </li>
+            <li>
+              <Link href="/" className="block py-2 hover:text-black">
+                Videos
+              </Link>
+            </li>
+            <li>
+              <Link href="/" className="block py-2 hover:text-black">
+                About Me
+              </Link>
+            </li>
+          </ul>
+        )}
       </nav>
     </div>
   );
@@ -68,7 +99,7 @@ const Footer = () => {
   return (
     <>
       <DividerLine />
-      <div className="flex ml-40 py-4" id="footer">
+      <div className="flex flex-wrap justify-center gap-4 py-4" id="footer">
         {renderFooterImageTile(
           "/github.svg",
           "github",
@@ -77,7 +108,7 @@ const Footer = () => {
         {renderFooterImageTile(
           "/linkedin.svg",
           "linkedin",
-          "https://www.linkedin.com/in/adityasrivastava11/inkedin"
+          "https://www.linkedin.com/in/adityasrivastava11/"
         )}
         {renderFooterImageTile(
           "/stack-overflow.svg",
@@ -91,7 +122,6 @@ const Footer = () => {
         )}
         {renderFooterImageTile("/youtube.svg", "youtube", "")}
       </div>
-      <div />
     </>
   );
 };
@@ -113,14 +143,11 @@ export default function RootLayout({
     <>
       <html lang="en">
         <head>
-          <meta
-            name="viewport"
-            content="width=device-width, initial-scale=0.1"
-          />
+          <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         </head>
-        <body className={`${inter.className} min-w-[1024px]`}>
+        <body className={`${inter.className} bg-white`}>
           <NavBar />
-          {children}
+          <main className="min-h-screen">{children}</main>
           <Footer />
         </body>
       </html>
