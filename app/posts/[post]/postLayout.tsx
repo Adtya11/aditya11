@@ -95,7 +95,7 @@ export function renderSpecialWord(text: string) {
 
 export function renderBulletPoint(text: string) {
   return (
-    <ul className="list-disc pl-5 text-sm sm:text-base md:text-lg">
+    <ul className="list-disc pl-5 text-base sm:text-lg md:text-xl">
       <li className="tracking-wide leading-relaxed">{text}</li>
     </ul>
   );
