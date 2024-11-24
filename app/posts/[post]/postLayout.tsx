@@ -1,7 +1,6 @@
 
 import { ReactNode, useEffect, useRef } from "react";
 import { parseDate } from "./utils";
-import { PlaceLike } from './../like';
 
 interface Props {
   child: ReactNode;
