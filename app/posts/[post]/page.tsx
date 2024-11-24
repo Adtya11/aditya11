@@ -23,20 +23,6 @@ type paramsType = {
   post: string;
 };
 
-// const post = {
-//   id: 2,
-//   title: "Asynchronous JavaScript through event loop",
-//   slug: "asynchronous-javascript-through-event-loop",
-//   content: content,
-//   description: "Asynchronous JavaScript through event loop description",
-//   thumbnail: "",
-//   updatedAt: new Date(2024, 11, 22),
-//   tags: {
-//     tags: ["event-loop", "javascript-working", 'asynchronous-programming'],
-//   },
-//   likes: 0,
-// };
-
 export default async function Page({ params }: { params: paramsType }) {
   const header = headers();
   // const ip = (header.get("x-forwarded-for") ?? "127.0.0.1").split(",")[0];
